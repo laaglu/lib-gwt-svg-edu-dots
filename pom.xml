@@ -18,9 +18,9 @@
 		</license>
 	</licenses>
 	<scm>
-		<url>http://code.google.com/p/vectomatic/source/browse/#svn/lib-gwt-svg-edu-dots/trunk</url>
-		<connection>scm:svn:http://vectomatic.googlecode.com/svn/lib-gwt-svg-edu-dots/trunk</connection>
-		<developerConnection>scm:svn:file:///home/laaglu/svn/laaglu-svn/lib-gwt-svg-edu-dots/trunk</developerConnection>
+		<url>scm:git:git@github.com:laaglu/lib-gwt-svg-edu-dots.git</url>
+		<connection>scm:git:git@github.com:laaglu/lib-gwt-svg-edu-dots.git</connection>
+		<developerConnection>scm:git:git@github.com:laaglu/lib-gwt-svg-edu-dots.git</developerConnection>
 	</scm>
 	<dependencies>
 		<dependency>
