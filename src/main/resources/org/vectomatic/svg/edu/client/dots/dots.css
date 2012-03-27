@@ -1,0 +1,73 @@
+#dots > g > g > circle {
+  fill:white;
+  stroke:black;
+}
+#dots > g > g > circle + circle {
+  fill:black;
+  stroke:none;
+}
+
+#dots > g > g > text {
+  font-family:"Verdana";
+  font-size:12px;
+  fill:black;
+}
+
+#dots > g > g:hover > circle {
+  fill:white;
+  stroke:red;
+}
+
+#dots > g > g:hover > circle + circle {
+  fill:red;
+  stroke:none;
+}
+
+#dots > g > g:hover > text {
+  font-family:"Verdana";
+  font-size:12px;
+  fill:red;
+}
+
+
+#dots > g.validated > g > circle {
+  fill:white;
+  stroke:green;
+}
+#dots > g.validated > g > circle + circle {
+  fill:green;
+  stroke:none;
+}
+
+#dots > g.validated > g > text {
+  font-family:"Verdana";
+  font-size:12px;
+  fill:black;
+}
+
+#dots > g.validated > g:hover > circle {
+  fill:white;
+  stroke:green;
+}
+
+#dots > g.validated > g:hover > circle + circle {
+  fill:green;
+  stroke:none;
+}
+
+#dots > g.validated > g:hover > text {
+  font-family:"Verdana";
+  font-size:12px;
+  fill:black;
+}
+
+.line-visible {
+  fill:none;
+  stroke:black;
+  visibility:visible;
+}
+.line-invisible {
+  fill:none;
+  stroke:black;
+  visibility:hidden;
+}
