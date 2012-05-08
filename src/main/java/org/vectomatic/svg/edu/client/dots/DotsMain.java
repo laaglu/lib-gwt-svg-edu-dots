@@ -56,6 +56,7 @@ import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.Node;
+import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.dom.client.Style.Visibility;
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -274,6 +275,8 @@ public class DotsMain implements MouseDownHandler, MouseMoveHandler, MouseUpHand
 		// Create the root SVG structure elements
 		doc = OMSVGParser.currentDocument();
 		rootSvg = doc.createSVGSVGElement();
+		rootSvg.getWidth().getBaseVal().newValueSpecifiedUnits(Unit.PCT, 100);
+		rootSvg.getHeight().getBaseVal().newValueSpecifiedUnits(Unit.PCT, 100);
 
 		// Create the SVG filters
 		defs = doc.createSVGDefsElement();
