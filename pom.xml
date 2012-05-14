@@ -7,7 +7,7 @@
 	</parent>
 	<artifactId>lib-gwt-svg-edu-dots</artifactId>
 	<packaging>war</packaging>
-	<version>0.3.13-SNAPSHOT</version>
+	<version>0.3.13</version>
 	<name>lib-gwt-svg-edu-dots</name>
 	<description>Educational game for kindergarten children, based on lib-gwt-svg. The goal of this game is to connect the dots in order to form a picture</description>
 	<url>http://www.vectomatic.org/mvn-sites/lib-gwt-svg-edu-dots</url>
