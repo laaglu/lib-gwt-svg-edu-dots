@@ -24,7 +24,6 @@ import org.vectomatic.dom.svg.OMNode;
 import org.vectomatic.dom.svg.OMNodeList;
 import org.vectomatic.dom.svg.OMSVGCircleElement;
 import org.vectomatic.dom.svg.OMSVGDefsElement;
-import org.vectomatic.dom.svg.OMSVGDocument;
 import org.vectomatic.dom.svg.OMSVGFEColorMatrixElement;
 import org.vectomatic.dom.svg.OMSVGFEGaussianBlurElement;
 import org.vectomatic.dom.svg.OMSVGFilterElement;
@@ -168,7 +167,6 @@ public class DotsMain implements MouseDownHandler, MouseMoveHandler, MouseUpHand
 	 * </svg>
 	 * </tt>
 	 */
-	private OMSVGDocument doc;
 	private OMSVGSVGElement rootSvg;
 	private OMSVGDefsElement defs;
 	private OMSVGGElement pictureGroup;
@@ -273,16 +271,15 @@ public class DotsMain implements MouseDownHandler, MouseMoveHandler, MouseUpHand
 		dots = new ArrayList<OMSVGGElement>();
 		
 		// Create the root SVG structure elements
-		doc = OMSVGParser.currentDocument();
-		rootSvg = doc.createSVGSVGElement();
+		rootSvg = new OMSVGSVGElement();
 		rootSvg.getWidth().getBaseVal().newValueSpecifiedUnits(Unit.PCT, 100);
 		rootSvg.getHeight().getBaseVal().newValueSpecifiedUnits(Unit.PCT, 100);
 
 		// Create the SVG filters
-		defs = doc.createSVGDefsElement();
-		OMSVGFilterElement alpha1Filter = doc.createSVGFilterElement();
+		defs = new OMSVGDefsElement();
+		OMSVGFilterElement alpha1Filter = new OMSVGFilterElement();
 		alpha1Filter.setId(ID_ALPHA1_FILTER);
-		OMSVGFEColorMatrixElement feColorMatrix1 = doc.createSVGFEColorMatrixElement();
+		OMSVGFEColorMatrixElement feColorMatrix1 = new OMSVGFEColorMatrixElement();
 		feColorMatrix1.getIn1().setBaseVal(OMSVGFilterElement.IN_SOURCE_GRAPHIC);
 		feColorMatrix1.getType().setBaseVal(OMSVGFEColorMatrixElement.SVG_FECOLORMATRIX_TYPE_MATRIX);
 		pictureAlpha1 = feColorMatrix1.getValues().getBaseVal().appendItems(rootSvg, new float[]{
@@ -292,19 +289,19 @@ public class DotsMain implements MouseDownHandler, MouseMoveHandler, MouseUpHand
 				0f, 0f, 0f, 1f, 0f,
 		})[18];
 		
-		OMSVGFilterElement transitionFilter = doc.createSVGFilterElement();
+		OMSVGFilterElement transitionFilter = new OMSVGFilterElement();
 		transitionFilter.setId(ID_TRANSITION_FILTER);
-		gaussianBlur = doc.createSVGFEGaussianBlurElement();
+		gaussianBlur = new OMSVGFEGaussianBlurElement();
 		gaussianBlur.setStdDeviation(0, 0);
 		gaussianBlur.getIn1().setBaseVal(OMSVGFilterElement.IN_SOURCE_GRAPHIC);
 		gaussianBlur.getResult().setBaseVal("blur");
 		
-		gaussianBlur = doc.createSVGFEGaussianBlurElement();
+		gaussianBlur = new OMSVGFEGaussianBlurElement();
 		gaussianBlur.setStdDeviation(0, 0);
 		gaussianBlur.getIn1().setBaseVal(OMSVGFilterElement.IN_SOURCE_GRAPHIC);
 		gaussianBlur.getResult().setBaseVal("blur");
 		
-		OMSVGFEColorMatrixElement feColorMatrix2 = doc.createSVGFEColorMatrixElement();
+		OMSVGFEColorMatrixElement feColorMatrix2 = new OMSVGFEColorMatrixElement();
 		feColorMatrix2.getIn1().setBaseVal("blur");
 		feColorMatrix2.getType().setBaseVal(OMSVGFEColorMatrixElement.SVG_FECOLORMATRIX_TYPE_MATRIX);
 		pictureAlpha2 = feColorMatrix2.getValues().getBaseVal().appendItems(rootSvg, new float[]{
@@ -314,9 +311,9 @@ public class DotsMain implements MouseDownHandler, MouseMoveHandler, MouseUpHand
 				0f, 0f, 0f, 1f, 0f,
 		})[18];
 
-		OMSVGFilterElement alpha3Filter = doc.createSVGFilterElement();
+		OMSVGFilterElement alpha3Filter = new OMSVGFilterElement();
 		alpha3Filter.setId(ID_ALPHA2_FILTER);
-		OMSVGFEColorMatrixElement feColorMatrix3 = doc.createSVGFEColorMatrixElement();
+		OMSVGFEColorMatrixElement feColorMatrix3 = new OMSVGFEColorMatrixElement();
 		feColorMatrix3.getIn1().setBaseVal(OMSVGFilterElement.IN_SOURCE_GRAPHIC);
 		feColorMatrix3.getType().setBaseVal(OMSVGFEColorMatrixElement.SVG_FECOLORMATRIX_TYPE_MATRIX);
 		dotAlpha = feColorMatrix3.getValues().getBaseVal().appendItems(rootSvg, new float[]{
@@ -329,11 +326,11 @@ public class DotsMain implements MouseDownHandler, MouseMoveHandler, MouseUpHand
 
 		// Compose the root SVG structure
 		rootSvg.appendChild(defs);
-		pictureGroup = doc.createSVGGElement();
-		dotGroup = doc.createSVGGElement();
+		pictureGroup = new OMSVGGElement();
+		dotGroup = new OMSVGGElement();
 		dotGroup.setAttribute("id", "dots");
-		lineGroup = doc.createSVGGElement();
-		polyline = doc.createSVGPolylineElement();
+		lineGroup = new OMSVGGElement();
+		polyline = new OMSVGPolylineElement();
 		polyline.setClassNameBaseVal(css.lineInvisible());			
 		polyline.getStyle().setSVGProperty(SVGConstants.SVG_FILTER_ATTRIBUTE, DOMHelper.toUrl(ID_ALPHA2_FILTER));
 		points = polyline.getPoints();
@@ -482,7 +479,7 @@ public class DotsMain implements MouseDownHandler, MouseMoveHandler, MouseUpHand
 					svgContainer.setHTML("Cannot find resource");
 					return;
 				}
-				OMSVGGElement g = doc.createSVGGElement();
+				OMSVGGElement g = new OMSVGGElement();
 				rootSvg.replaceChild(g, dotGroup);
 				dotGroup = g;
 				finish();
@@ -636,20 +633,20 @@ public class DotsMain implements MouseDownHandler, MouseMoveHandler, MouseUpHand
 	}
 
 	private OMSVGGElement createDot(int pIndex, float x, float y) {
-		OMSVGGElement g1 = doc.createSVGGElement();
+		OMSVGGElement g1 = new OMSVGGElement();
 		OMSVGTransform translation = rootSvg.createSVGTransform();
 		translation.setTranslate(x, y);
 		g1.getTransform().getBaseVal().appendItem(translation);
 
-		OMSVGGElement g2 = doc.createSVGGElement();
+		OMSVGGElement g2 = new OMSVGGElement();
 		OMSVGTransform scaling = rootSvg.createSVGTransform();
 		OMSVGMatrix m = rootSvg.getScreenCTM().inverse();
 		scaling.setScale(m.getA(), m.getD());
 		g2.getTransform().getBaseVal().appendItem(scaling);
 
-		OMSVGCircleElement circle1 = doc.createSVGCircleElement(0f, 0f, 5f);
-		OMSVGCircleElement circle2 = doc.createSVGCircleElement(0f, 0f, 3f);
-		OMSVGTextElement text = doc.createSVGTextElement(0f, 16f, OMSVGLength.SVG_LENGTHTYPE_PX, Integer.toString(pIndex));
+		OMSVGCircleElement circle1 = new OMSVGCircleElement(0f, 0f, 5f);
+		OMSVGCircleElement circle2 = new OMSVGCircleElement(0f, 0f, 3f);
+		OMSVGTextElement text = new OMSVGTextElement(0f, 16f, OMSVGLength.SVG_LENGTHTYPE_PX, Integer.toString(pIndex));
 		
 		g1.appendChild(g2);
 		g2.appendChild(circle1);
