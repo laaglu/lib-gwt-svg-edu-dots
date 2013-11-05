@@ -45,9 +45,9 @@ import org.vectomatic.dom.svg.utils.AsyncXmlLoaderCallback;
 import org.vectomatic.dom.svg.utils.DOMHelper;
 import org.vectomatic.dom.svg.utils.OMSVGParser;
 import org.vectomatic.dom.svg.utils.SVGConstants;
-import org.vectomatic.svg.edu.client.commons.CommonBundle;
 import org.vectomatic.svg.edu.client.commons.CommonConstants;
 import org.vectomatic.svg.edu.client.commons.LicenseBox;
+import org.vectomatic.svg.edu.client.commons.Utils;
 
 import com.google.gwt.animation.client.Animation;
 import com.google.gwt.core.client.Duration;
@@ -114,7 +114,7 @@ public class DotsMain implements MouseDownHandler, MouseMoveHandler, MouseUpHand
 	private DotsCss css = DotsResources.INSTANCE.css();
 	
 	@UiField(provided=true)
-	CommonBundle common = CommonBundle.INSTANCE;
+	DotsBundle common = DotsBundle.INSTANCE;
 	@UiField
 	HTML svgContainer;
 	@UiField
@@ -241,7 +241,10 @@ public class DotsMain implements MouseDownHandler, MouseMoveHandler, MouseUpHand
 	public void onModuleLoad() {
 		css.ensureInjected();
 		common.css().ensureInjected();
-		
+		common.mediaQueries().ensureInjected();
+		Utils.injectMediaQuery("(orientation:landscape)", common.mediaQueriesLandscape());
+		Utils.injectMediaQuery("(orientation:portrait)", common.mediaQueriesPortrait());
+
 		// Initialize the UI with UiBinder
 		panel = mainBinder.createAndBindUi(this);
 		if (menuWidget == null) {
@@ -291,11 +294,6 @@ public class DotsMain implements MouseDownHandler, MouseMoveHandler, MouseUpHand
 		
 		OMSVGFilterElement transitionFilter = new OMSVGFilterElement();
 		transitionFilter.setId(ID_TRANSITION_FILTER);
-		gaussianBlur = new OMSVGFEGaussianBlurElement();
-		gaussianBlur.setStdDeviation(0, 0);
-		gaussianBlur.getIn1().setBaseVal(OMSVGFilterElement.IN_SOURCE_GRAPHIC);
-		gaussianBlur.getResult().setBaseVal("blur");
-		
 		gaussianBlur = new OMSVGFEGaussianBlurElement();
 		gaussianBlur.setStdDeviation(0, 0);
 		gaussianBlur.getIn1().setBaseVal(OMSVGFilterElement.IN_SOURCE_GRAPHIC);
