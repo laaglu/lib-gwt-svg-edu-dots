@@ -1,0 +1,73 @@
+/* CSS positionning rule for the game area */
+.game {
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:88%;
+}
+/* CSS positionning rule for the game navigation panel: 
+menu button, previous level button, next level button */
+.nav-panel {
+	left:20%;
+	width:60%;
+	height:12%;
+	bottom:0px;
+	position:absolute;
+}
+/* CSS positionning rule for the menu button */
+.nav-panel-menu-btn {
+	left:0%;
+	width:20%;
+	height:100%;
+	position:absolute;
+}
+/* CSS positionning rule for the previous level button */
+.nav-panel-prev-btn {
+	left:33%;
+	width:20%;
+	height:100%;
+	position:absolute;
+}
+/* CSS positionning rule for the next level button */
+.nav-panel-next-btn {
+	left:66%;
+	width:20%;
+	height:100%;
+	position:absolute;
+}
+/* CSS positionning rule for the next difficulty picker */
+.nav-panel-difficulty-picker  {
+	right:0%;
+	width:40%;
+	height:100%;
+	position:absolute;
+	display:table;
+}
+
+div.nav-panel-difficulty-picker > div {
+  display: table-cell;
+  border: 1px solid black;
+  vertical-align: middle;
+  text-align:center;
+  font-size:100%;
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  background: lightblue;
+}
+
+div.nav-panel-difficulty-picker > div:first-child {
+  border-radius: 20% 0% 0% 20%;
+}
+
+div.nav-panel-difficulty-picker > div:last-child {
+  border-radius: 0% 20% 20% 0%;
+}
+
+div.nav-panel-difficulty-picker > div.difficulty-picker-selected {
+  background: rgb(255,200,0) !important;
+}
+
