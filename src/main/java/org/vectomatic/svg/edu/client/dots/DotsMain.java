@@ -297,7 +297,7 @@ public class DotsMain implements MouseDownHandler, MouseMoveHandler, MouseUpHand
 		gaussianBlur = new OMSVGFEGaussianBlurElement();
 		gaussianBlur.setStdDeviation(0, 0);
 		gaussianBlur.getIn1().setBaseVal(OMSVGFilterElement.IN_SOURCE_GRAPHIC);
-		// Bypass for firefox bug ?
+		// Bypass for firefox bug 935902
 		//gaussianBlur.getResult().setBaseVal("blur");
 		gaussianBlur.setAttribute(SVGConstants.SVG_RESULT_ATTRIBUTE, "blur");
 		
