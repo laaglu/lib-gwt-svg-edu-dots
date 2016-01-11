@@ -277,6 +277,7 @@ public class DotsMain implements MouseDownHandler, MouseMoveHandler, MouseUpHand
 		rootSvg = new OMSVGSVGElement();
 		rootSvg.getWidth().getBaseVal().newValueSpecifiedUnits(Unit.PCT, 100);
 		rootSvg.getHeight().getBaseVal().newValueSpecifiedUnits(Unit.PCT, 100);
+		rootSvg.addClassNameBaseVal(css.rootSvg());
 
 		// Create the SVG filters
 		defs = new OMSVGDefsElement();

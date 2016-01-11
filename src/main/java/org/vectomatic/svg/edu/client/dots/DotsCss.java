@@ -26,4 +26,6 @@ public interface DotsCss extends CssResource {
 	String lineVisible();
 	@ClassName("line-invisible")
 	String lineInvisible();
+	@ClassName("root-svg")
+	String rootSvg();
 }
