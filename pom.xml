@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>org.vectomatic</groupId>
 		<artifactId>vectomatic-gwt-parent</artifactId>
-		<version>0.7-SNAPSHOT</version>
+		<version>0.7</version>
 	</parent>
 	<artifactId>lib-gwt-svg-edu-dots</artifactId>
 	<packaging>war</packaging>
@@ -32,12 +32,12 @@
 		<dependency>
 			<groupId>com.google</groupId>
 			<artifactId>gwt-incubator-slider</artifactId>
-			<version>0.1.6-SNAPSHOT</version>
+			<version>0.1.6</version>
 		</dependency>
 		<dependency>
 			<groupId>org.vectomatic</groupId>
 			<artifactId>lib-gwt-svg-edu-commons</artifactId>
-			<version>0.3.21-SNAPSHOT</version>
+			<version>0.3.21</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
